@@ -129,12 +129,16 @@ class TabularPrediction(BaseTask):
                      and the lightGBM docs: https://lightgbm.readthedocs.io/en/latest/Parameters.html
                 CAT: See `file autogluon/utils/tabular/ml/models/catboost/hyperparameters/parameters.py` 
                      and the CatBoost docs: https://catboost.ai/docs/concepts/parameter-tuning.html
-                RF: `n_estimators` is currently the only hyperparameter you can specify, 
-                    see sklearn docs: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html 
-                XT: `n_estimators` is currently the only hyperparameter you can specify, 
-                    see sklearn docs: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html
-                KNN: Currently no hyperparameters may be specified for k-nearest-neighbors models
-                
+                RF: See sklearn docs: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+                    Note: Hyperparameter tuning is disabled for this model.
+                    Note: 'criterion' parameter will be overriden.
+                XT: See sklearn docs: https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html
+                    Note: Hyperparameter tuning is disabled for this model.
+                    Note: 'criterion' parameter will be overriden.
+                KNN: See sklearn docs: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+                    Note: Hyperparameter tuning is disabled for this model.
+                    Note: 'weights' parameter will be overriden.
+
         holdout_frac : (float) 
             Fraction of train_data to holdout as tuning data for optimizing hyperparameters (ignored unless `tuning_data = None`, ignored if `num_bagging_folds != 0`). 
             Default value is 0.2 if `hyperparameter_tune = True`, otherwise 0.1 is used by default. 
